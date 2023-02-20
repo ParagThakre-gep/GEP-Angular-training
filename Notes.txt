@@ -1,0 +1,29 @@
+// g: generate, c:component, home: name of component
+ng g c home
+ng g c product/product-list
+
+// Bootstrap installation
+npm i bootstrap@4.5
+"node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+//  Add Pipes in Code
+ng g p shared/convert-to-space
+
+//
+# can be used in html form
+
+
+//life cycle
+constructor(){} :
+ngOnChange(){} : data bound input
+ngOnInit(){} : initialize the directive or Component after ngOnChange
+ngDoCheck(){} : detect and act upon changes that angular can't detect
+ngAfterContentInit(){} :
+ngAfterViewInit(){} : 
+ngOnDestroy(){} :
+
+// Guards
+//ng g guard product/guard/product-edit --flat
+
+// this command will create the product module in product folder and import it to the app module
+//ng g m product/product --flat -m app 

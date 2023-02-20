@@ -1,0 +1,78 @@
+
+<div>
+    <table class="table table-striped table-bordered" *ngIf="product">
+        <thead >
+            <th>
+                Procduct Image
+            </th>
+            <th>
+                Product Information
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td >
+                    <figure>
+                        <img 
+                        [src]="product.imageUrl" 
+                        [title]="product.productName" 
+                        [style.width.px]="imgWidth" 
+                        [style.margin.px]="imgMargin"
+                        >
+                    </figure>
+                </td>
+                <td>
+                    <div class="left-box">
+                        <p class="m-2">Product Id : {{product.productId}}</p>
+                        <p class="m-2">Product Name : {{product.productName}}</p>
+                        <p class="m-2">Product Price : {{product.price}}</p>
+                        <p class="m-2">Product Code : {{product.productCode}}</p>
+                        <p class="m-2">Product Star Rating : {{product.starRating}}</p>
+                        <p class="m-2">Product Category : {{product.category}}</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <button class="btn btn-outline-primary mr-3"
+        style="width: 80px"
+        (click) = "onBack()"
+        >
+        <i class="fa fa-chevron-left"></i>
+            Back
+        </button>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-outline-primary mr-3"
+        style="width: 80px"
+        (click) = "onEdit()"
+        >
+            Edit
+        <i class="fa fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
+
+<!-- <div class="box">
+
+    <figure>
+        <p>Product Image</p>
+        <img src="./assets/images/soccer.jpeg"
+             alt="Elephant at sunset">
+    </figure>
+    <div class="left-box bg-primary">
+        <p class="m-2">Product Id : {{product.productId}}</p>
+                        <p class="m-2">Product Name : {{product.productName}}</p>
+                        <p class="m-2">Product Price : {{product.price}}</p>
+                        <p class="m-2">Product Code : {{product.productCode}}</p>
+                        <p class="m-2">Product Star Rating : {{product.starRating}}</p>
+                        <p class="m-2">Product Category : {{product.category}}</p>
+    </div>
+</div> -->
+
+
+<!-- created the html page for the produtct details  -->

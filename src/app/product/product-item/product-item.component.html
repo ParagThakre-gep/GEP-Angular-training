@@ -1,0 +1,64 @@
+{{errorMessage}}
+<div>
+    <table class="table table-striped table-bordered" *ngIf="product">
+        <thead >
+            <th>
+                Procduct Image
+            </th>
+            <th>
+                Product Information
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td >
+                    <figure>
+                        <img src="./assets/images/soccer.jpeg"
+                             alt="Elephant at sunset">
+                    </figure>
+                </td>
+                <td>
+                    <div class="left-box">
+                        <p class="m-2">Product Id : {{product.productId}}</p>
+                        <p class="m-2">Product Name : {{product.productName}}</p>
+                        <p class="m-2">Product Price : {{product.price}}</p>
+                        <p class="m-2">Product Code : {{product.productCode}}</p>
+                        <p class="m-2">Product Star Rating : {{product.starRating}}</p>
+                        <p class="m-2">Product Category : {{product.category}}</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="box">
+
+    <figure>
+        <p>Product Image</p>
+        <img src="./assets/images/soccer.jpeg"
+             alt="Elephant at sunset">
+    </figure>
+    <div class="left-box bg-primary">
+        <p class="m-2 text-danger">Product Info</p>
+        <p class="m-2">Product Id : {{product.productId}}</p>
+        <p class="m-2">Product Name : {{product.productName}}</p>
+        <p class="m-2">Product Price : {{product.price}}</p>
+    </div>
+</div> -->
+

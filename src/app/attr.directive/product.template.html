@@ -1,0 +1,46 @@
+<div class="row p-2">
+    <div class="col-6">
+        <form (ngSubmit)="submitForm()" class="m-2">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" name="productName" [(ngModel)] = newProduct.productName>
+
+            </div>
+
+            <div class="form-group">
+                <label>Price</label>
+                <input class="form-control" name="price" [(ngModel)] = newProduct.price>
+
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <input class="form-control" name="category" [(ngModel)] = newProduct.category>
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+                Create
+            </button>
+        </form>
+
+    </div>
+    <div class="col-6">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <th>Name</th><th>Price</th><th>Category</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of products; let i=index"
+                [sp-attr] ="products.length < 5 ? 'table-success' : 'table-warning'"
+                (sp-category)="newProduct.category= $event"
+                [sp-product]= "item"
+                >
+                    <td >{{item.productName}}</td>
+                    <td [sp-attr] ="item.price >= 1000 ? 'text-danger' : null">{{item.price}}</td>
+                    <td [sp-attr] ="item.category == 'Soccer' ? 'text-white' : null">{{item.category}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

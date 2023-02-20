@@ -1,0 +1,96 @@
+<!-- Template Driven Forms -->
+<h1>Add New Product</h1>
+<div class="bg-primary">
+Product Added : {{jsonProduct}}
+</div>
+<div>
+    <form action="" #form="ngForm" class="form-group" (submit)="submitForm(form)">
+        <div class="bg-danger list-unstyled mt-1" *ngIf="formSubmitted && form.invalid">
+            <ul>
+                <li *ngFor = "let error of getFormValidationMessages(form)">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <label for="">Product Id</label>
+            <input class="form-control" 
+            placeholder="Enter a Id" name="productId" 
+            [(ngModel)] ="newProduct.productId"
+            required
+            />
+        </div>
+        <div class="form-group">
+            <label for="">Product Name</label>
+            <input class="form-control"
+             placeholder="Enter a Name" 
+             #productName = 'ngModel'
+             name="productName" 
+             [(ngModel)] ="newProduct.productName"
+             required
+             minlength="5"
+             pattern="^[A-Za-z ]+$"
+             />
+
+             <ul class="text-danger list-unstyled mt-1 " *ngIf="productName.dirty && productName.invalid">
+                <li *ngIf="productName.errors?.['required']">You must Enter a Product Name</li>
+                <li *ngIf="productName.errors?.['pattern']">Proudct Name can only letter and spaces</li>
+                <li *ngIf="productName.errors?.['minlength']">Product Name should have minimum {{productName.errors?.['minlength'].value}} characters</li>
+             </ul>
+
+        </div>
+        <div class="form-group">
+            <label for="">Product Price</label>
+            <input class="form-control" 
+            #price ='ngModel'
+            placeholder="Enter a Price" 
+            [(ngModel)] ="newProduct.price"
+            name="price" 
+            required
+            type="number"
+            min ="100"
+            max="10000"
+            />
+
+            <ul class="text-danger list-unstyled mt-1 " *ngIf="price.dirty && price.invalid">
+                <li *ngIf="price.errors?.['required']">You must Enter a Product Price</li>
+                <li *ngIf="price.errors?.['min'] || price.errors?.['max']"> The Price should be int between 100 to 10000 value</li>
+             </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="">Product Code</label>
+            <input class="form-control" 
+            #productCode ='ngModel'
+            placeholder="Enter a code" 
+            [(ngModel)] ="newProduct.productCode"
+            name="productCode" 
+            required
+            minlength="5"
+            pattern="[\w-]+$"
+            />
+
+            <ul class="text-danger list-unstyled mt-1 " *ngIf="productCode.dirty && productCode.invalid">
+                <li *ngFor="let error of getValidationMessages(productCode)">{{error}}</li>
+             </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="">Product Star Rating</label>
+            <input class="form-control" placeholder="Enter a Rating" name="starRating" 
+            [(ngModel)] ="newProduct.starRating"
+            type="number"
+            #starRating="ngModel"
+            required
+            max="5"
+            />
+            <ul class="text-danger list-unstyled mt-1 " *ngIf="starRating.dirty && starRating.invalid">
+                <li *ngFor="let error of getValidationMessages(starRating)">{{error}}</li>
+            </ul>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit"
+        [disabled]="formSubmitted && form.invalid"
+        [class.btn-secondary] ="formSubmitted && form.invalid"
+        >Add</button>
+    </form>
+</div>

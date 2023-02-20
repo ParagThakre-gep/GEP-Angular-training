@@ -1,0 +1,79 @@
+<h1 class="bg-primary text-white m-2 p-2">{{pageTitle}}</h1>
+<h2>Total Item : {{products.length}}</h2>
+<h4>{{errorMessage}}</h4>
+
+<!-- Events, Event Binding and Two Binding -->
+
+<div class="p-2">
+    <div class="bg-info text-white p-2">
+        Selected Product: {{selectedProduct ?? 'None'}}
+    </div>
+</div>
+
+
+<div>
+    <table class="table table-striped table-bordered" *ngIf="products && products.length>0">
+        <thead >
+            <th>
+                #
+            </th>
+            <th>
+                <button (click)="toggleImage()">{{showImage ? 'Hide' : 'show'}} Image</button>
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>Product Code</th>
+            <th>
+                Release Date
+            </th>
+            <th>
+                Rating
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products; let i=index"
+            [class.bg-info]="getSelected(p)"
+            >
+                <td (mouseover)="selectedProduct= p.productName">{{i+1}}</td>
+                <td><img
+                    *ngIf="showImage" 
+                    [src]="p.imageUrl" 
+                    [title]="p.productName" 
+                    [style.width.px]="imgWidth" 
+                    [style.margin.px]="imgMargin"
+                    ></td>
+                <td> <a [routerLink] = "['/products', p.productId]"> {{p.productName | uppercase}} </a> </td>
+                <td>{{p.price | currency:'INR' : 'symbol' : '1.2-2'}}</td>
+                <td>{{p.productCode}}</td>
+                <td>{{p.releaseDate | date:'mediumDate'}}</td>
+                <td><app-star [rating]="p.starRating" (ratingClicked)= onRatingClicked($event)></app-star></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="form-group">
+    <label for="">Product Name</label>
+    <input class="form-control"  
+    (input) = "selectedProduct= $any($event).target.value"
+    [value] = "selectedProduct ?? 'None'"
+    >
+</div>
+
+<div class="form-group">
+    <label for="">Product Name</label>
+    <input class="form-control"  
+    
+    [(ngModel)] = "selectedProduct"
+    >
+</div>
+
+<!-- Properties common to ALLDOM Events objects 
+type -  a string which is type of the event that has been triggered
+target- return object that triggerd the event
+timestamp - return a number = time the event triggered-->
+
